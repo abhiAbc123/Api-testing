@@ -1,0 +1,191 @@
+[
+  {
+    "id": 1,
+    "query": "Add a pytest test case for contract approval submission in API automation. The API method goes to the end of page_api/contract_api.py, and the test case goes to the end of test_case/test_contract_api_PC.py, case name: Contract Approval - Submit Approval. Capture service is running on 12138, execute via capture-driven mode.",
+    "should_trigger": true,
+    "branch": "new/capture_driven",
+    "category": "New - Capture-Driven"
+  },
+  {
+    "id": 2,
+    "query": "Refer to test_create_workflow in test_case/test_workflow_api_PC.py to write an API automation test case for creating a workflow draft. Task info: API method file=end of page_api/workflow_api.py, test case file=end of test_case/test_workflow_api_PC.py, case name=Workflow - Create Draft. Difference: endpoint changed to /api/workflow/draft/create, with an added draftName field.",
+    "should_trigger": true,
+    "branch": "new/reference_case",
+    "category": "New - Reference Case"
+  },
+  {
+    "id": 3,
+    "query": "Capture is unavailable, here is the cURL. Please add an organization query API method and test case in API automation.\n# Task Information\n- [API Method File]=end of page_api/org_api.py\n- [API Method Location]=end of file\n- [Test Case File]=test_case/test_org_api_PC.py\n- [Test Case Location]=end of file\n- [Case Name]=Org - Query Org Tree\n\ncurl -X POST 'http://10.12.1.20/api/hrm/org/tree' -H 'Content-Type: application/json' -d '{\"parentId\":0}'\nResponse: {\"code\":200,\"data\":[{\"id\":1,\"name\":\"Headquarters\"}]}",
+    "should_trigger": true,
+    "branch": "new/curl_manual",
+    "category": "New - Manual cURL"
+  },
+  {
+    "id": 4,
+    "query": "Backend provided this Java Controller source path D:/backend/src/main/java/com/weaver/form/FormController.java. Please check against page_api index to see which APIs are not automated yet, and create API methods and pytest test cases for uncovered ones. Put API methods at the end of page_api/form_api.py, and test cases at the end of test_case/test_form_api_PC.py.",
+    "should_trigger": true,
+    "branch": "new/java_controller",
+    "category": "New - Java Controller"
+  },
+  {
+    "id": 5,
+    "query": "Several APIs in this Jacoco report page http://10.12.101.50:8080/jacoco/com.weaver.attendance/AttendanceController.java.html are not yet covered by automation tests. Help me complete them into the API automation project using Java Controller source reference mode.",
+    "should_trigger": true,
+    "branch": "new/java_controller",
+    "category": "New - Jacoco Coverage"
+  },
+  {
+    "id": 6,
+    "query": "Maintain test_submit_leave in test_case/test_leave_api_PC.py; the workflow recently changed. I captured fresh packets; maintain using capture-driven mode and synchronize API methods and assertions to the latest workflow.\n# Maintenance Task Information\n- [Test Case File]=test_case/test_leave_api_PC.py\n- [Test Case Location]=test_submit_leave",
+    "should_trigger": true,
+    "branch": "maintenance/capture_driven",
+    "category": "Maintenance - Capture-Driven"
+  },
+  {
+    "id": 7,
+    "query": "Assertions and parametrization for test_budget_list in test_case/test_budget_api_PC.py need to match the style of test_budget_detail; perform localized maintenance referencing existing cases.\n# Maintenance Task Information\n- [Test Case File]=test_case/test_budget_api_PC.py\n- [Test Case Location]=test_budget_list",
+    "should_trigger": true,
+    "branch": "maintenance/reference_case",
+    "category": "Maintenance - Reference Case"
+  },
+  {
+    "id": 8,
+    "query": "Please help fix test_case/test_meeting_api_PC.py::TestMeeting::test_book_meeting; API payload changed. Here are the cURL and response; maintain against old implementation.\n# Maintenance Task Information\n- [Test Case File]=test_case/test_meeting_api_PC.py\n- [Test Case Location]=test_book_meeting\n\ncurl 'http://10.12.1.20/api/meeting/book' -H 'Content-Type: application/json' --data-raw '{\"roomId\":12,\"startTime\":\"2026-08-01 10:00\"}'",
+    "should_trigger": true,
+    "branch": "maintenance/curl_manual",
+    "category": "Maintenance - Manual cURL"
+  },
+  {
+    "id": 9,
+    "query": "Directly run test_case/test_attendance_api_PC.py::TestAttendance::test_clock_in; if it fails, fix according to errors until pytest passes. Execute the closed loop yourself.\n# Maintenance Task Information\n- [Test Case File]=test_case/test_attendance_api_PC.py\n- [Test Case Location]=test_clock_in",
+    "should_trigger": true,
+    "branch": "maintenance/pytest_driven",
+    "category": "Maintenance - pytest Error-Driven"
+  },
+  {
+    "id": 10,
+    "query": "Check whether URL /api/workflow/request/create has duplicate implementations in page_api; list them if found so we do not rewrite it.",
+    "should_trigger": true,
+    "branch": "utility/url_dedup",
+    "category": "Utility - URL Deduplication"
+  },
+  {
+    "id": 11,
+    "query": "Text in API test case test_case/test_hrm_api_PC.py has corrupted question marks; fix encoding to UTF-8 without BOM and verify import paths.",
+    "should_trigger": true,
+    "branch": "utility/encoding_fix",
+    "category": "Utility - Encoding Repair"
+  },
+  {
+    "id": 12,
+    "query": "Add parametrization to expense module in API automation: test_expense_submit in test_case/test_expense_api_PC.py should support normal, amount exceeded, and missing attachment test data, with synchronized assertions.",
+    "should_trigger": true,
+    "branch": "new_or_maintenance/parametrize",
+    "category": "Creation/Maintenance - Parametrization"
+  },
+  {
+    "id": 13,
+    "query": "Make login flow in UI automation testcases/test_login_case.py more reliable; Selenium often misses the login button, add an explicit wait.",
+    "should_trigger": false,
+    "branch": "negative/ui_automation",
+    "category": "Negative - UI Automation"
+  },
+  {
+    "id": 14,
+    "query": "Write a Python unit test for format_date function in utils/date_helper.py using pytest; unrelated to business APIs.",
+    "should_trigger": false,
+    "branch": "negative/unit_test",
+    "category": "Negative - Pure Unit Test"
+  },
+  {
+    "id": 15,
+    "query": "Our frontend Vue project calls /api/user/info; add a request interceptor in axios wrapper to attach token automatically. This is frontend code, not API test repository.",
+    "should_trigger": false,
+    "branch": "negative/frontend",
+    "category": "Negative - Frontend Development"
+  },
+  {
+    "id": 16,
+    "query": "API test job failed on Jenkins; check if pytest command and HTML report paths in Jenkinsfile are correct; do not edit test cases.",
+    "should_trigger": false,
+    "branch": "negative/ci_config",
+    "category": "Negative - CI Configuration"
+  },
+  {
+    "id": 17,
+    "query": "Explain how to install mitmproxy and set system proxy; I just want to inspect requests myself, not writing API automation test cases right now.",
+    "should_trigger": false,
+    "branch": "negative/tool_howto",
+    "category": "Negative - Tool Explanation"
+  },
+  {
+    "id": 18,
+    "query": "Extract a shared click method in BasePage under UI automation; unrelated to API testing.",
+    "should_trigger": false,
+    "branch": "negative/ui_pageobject",
+    "category": "Negative - UI PageObject"
+  },
+  {
+    "id": 19,
+    "query": "Database table structure for workflow_request changed; write a SQL migration script and update corresponding MyBatis mapper; do not touch automation tests.",
+    "should_trigger": false,
+    "branch": "negative/backend_sql",
+    "category": "Negative - Backend SQL"
+  },
+  {
+    "id": 20,
+    "query": "Can we change this Allure report theme to company colors? Specifically for UI automation reports directory, not API HTML reports.",
+    "should_trigger": false,
+    "branch": "negative/report_style",
+    "category": "Negative - Report Styling"
+  },
+  {
+    "id": 21,
+    "query": "There is a legacy test case test_old_bid_api in API automation directory with messy file and class names; help rename and organize directory structure without adding new API logic.",
+    "should_trigger": true,
+    "branch": "maintenance/refactor_existing",
+    "category": "Maintenance - Existing Case Refactoring"
+  },
+  {
+    "id": 22,
+    "query": "Run full pytest suite for API automation to see how many failures exist right now; produce a failure inventory without modifying code.",
+    "should_trigger": true,
+    "branch": "utility/pytest_inventory",
+    "category": "Utility - pytest Inventory"
+  },
+  {
+    "id": 23,
+    "query": "Use api-test-e10 skill to process checked API-TPL-001 through API-TPL-005 from git-diff-analyse report per Mode 5 API-TPL template workflow. api-landing.md is in output/run-2026-08-07/; execute per 7-step process in Mode 5.",
+    "should_trigger": true,
+    "branch": "new/api_tpl",
+    "category": "New - API-TPL Driven"
+  },
+  {
+    "id": 24,
+    "query": "Per Mode 5, process checked [x] API-TPL entries in output/run-latest/api-landing.md, adding corresponding page_api methods and pytest test cases into API automation. Use {param} fuzzy matching for deduplication and include trigger steps in docstrings.",
+    "should_trigger": true,
+    "branch": "new/api_tpl",
+    "category": "New - API-TPL Driven"
+  },
+  {
+    "id": 25,
+    "query": "Follow Mode 5 flow to implement checked [x] API-TPL templates (form data sharing and group chat creation endpoints) from api-landing.md into API methods and pytest cases; trigger steps and semantic case titles are required.",
+    "should_trigger": true,
+    "branch": "new/api_tpl",
+    "category": "New - API-TPL Driven"
+  },
+  {
+    "id": 26,
+    "query": "Check which API-TPLs are not yet checked in api-landing.md so I can review before deciding whether to implement. Inspect only, do not write code.",
+    "should_trigger": false,
+    "branch": "negative/api_tpl_readonly",
+    "category": "Negative - API-TPL Read-Only Inspection"
+  },
+  {
+    "id": 27,
+    "query": "Add API methods and pytest test cases in API automation: several uncovered APIs were mentioned in ai-result.md report from git-diff-analyse; help complete them. Note this is not API-TPL template implementation, but generic creation per standard creation modes.",
+    "should_trigger": true,
+    "branch": "new_or_maintenance/generic_new",
+    "category": "New - Generic Creation"
+  }
+]

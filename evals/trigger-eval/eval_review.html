@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Set Review - api-test-e10</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lora', Georgia, serif; background: #faf9f5; padding: 2rem; color: #141413; }
+    h1 { font-family: 'Poppins', sans-serif; margin-bottom: 0.5rem; font-size: 1.5rem; }
+    .description { color: #b0aea5; margin-bottom: 1.5rem; font-style: italic; max-width: 900px; }
+    .controls { margin-bottom: 1rem; display: flex; gap: 0.5rem; }
+    .btn { font-family: 'Poppins', sans-serif; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.875rem; font-weight: 500; }
+    .btn-add { background: #6a9bcc; color: white; }
+    .btn-add:hover { background: #5889b8; }
+    .btn-export { background: #d97757; color: white; }
+    .btn-export:hover { background: #c4613f; }
+    table { width: 100%; max-width: 1100px; border-collapse: collapse; background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    th { font-family: 'Poppins', sans-serif; background: #141413; color: #faf9f5; padding: 0.75rem 1rem; text-align: left; font-size: 0.875rem; }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid #e8e6dc; vertical-align: top; }
+    tr:nth-child(even) td { background: #faf9f5; }
+    tr:hover td { background: #f3f1ea; }
+    .section-header td { background: #e8e6dc; font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 0.8rem; color: #141413; text-transform: uppercase; letter-spacing: 0.05em; }
+    .query-input { width: 100%; padding: 0.4rem; border: 1px solid #e8e6dc; border-radius: 4px; font-size: 0.875rem; font-family: 'Lora', Georgia, serif; resize: vertical; min-height: 60px; }
+    .query-input:focus { outline: none; border-color: #d97757; box-shadow: 0 0 0 2px rgba(217,119,87,0.15); }
+    .toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle .slider { position: absolute; inset: 0; background: #b0aea5; border-radius: 24px; cursor: pointer; transition: 0.2s; }
+    .toggle .slider::before { content: ""; position: absolute; width: 18px; height: 18px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.2s; }
+    .toggle input:checked + .slider { background: #d97757; }
+    .toggle input:checked + .slider::before { transform: translateX(20px); }
+    .btn-delete { background: #c44; color: white; padding: 0.3rem 0.6rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-family: 'Poppins', sans-serif; }
+    .btn-delete:hover { background: #a33; }
+    .summary { margin-top: 1rem; color: #b0aea5; font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <h1>Eval Set Review: <span id="skill-name">api-test-e10</span></h1>
+  <p class="description">Current description: <span id="skill-desc">API test automation skill for python + pytest + requests. Used to add, maintain, complete, and migrate API test methods and pytest test cases. Triggers include: adding API methods, adding test cases, completing uncovered APIs from Java Controller source or Jacoco reports, maintaining existing methods and cases, extending parametrization, fixing assertions, inserting code at target locations, checking URL duplication, enforcing UTF-8 encoding, and running pytest closed-loop verification. Runtime artifacts are stored in api_test_dwp_temp/.</span></p>
+
+  <div class="controls">
+    <button class="btn btn-add" onclick="addRow()">+ Add Query</button>
+    <button class="btn btn-export" onclick="exportEvalSet()">Export Eval Set</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:65%">Query</th>
+        <th style="width:18%">Should Trigger</th>
+        <th style="width:10%">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="eval-body"></tbody>
+  </table>
+
+  <p class="summary" id="summary"></p>
+
+  <script>
+    const EVAL_DATA = [
+  {
+    "query": "Add a pytest test case for contract approval submission in API automation. The API method goes to the end of page_api/contract_api.py, and the test case goes to the end of test_case/test_contract_api_PC.py, case name: Contract Approval - Submit Approval. Capture service is running on 12138, execute via capture-driven mode.",
+    "should_trigger": true
+  },
+  {
+    "query": "Refer to test_create_workflow in test_case/test_workflow_api_PC.py to write an API automation test case for creating a workflow draft. Task info: API method file=end of page_api/workflow_api.py, test case file=end of test_case/test_workflow_api_PC.py, case name=Workflow - Create Draft. Difference: endpoint changed to /api/workflow/draft/create, with an added draftName field.",
+    "should_trigger": true
+  },
+  {
+    "query": "Capture is unavailable, here is the cURL. Please add an organization query API method and test case in API automation.\n# Task Information\n- [API Method File]=end of page_api/org_api.py\n- [API Method Location]=end of file\n- [Test Case File]=test_case/test_org_api_PC.py\n- [Test Case Location]=end of file\n- [Case Name]=Org - Query Org Tree\n\ncurl -X POST 'http://10.12.1.20/api/hrm/org/tree' -H 'Content-Type: application/json' -d '{\"parentId\":0}'\nResponse: {\"code\":200,\"data\":[{\"id\":1,\"name\":\"Headquarters\"}]}",
+    "should_trigger": true
+  },
+  {
+    "query": "Backend provided this Java Controller source path D:/backend/src/main/java/com/weaver/form/FormController.java. Please check against page_api index to see which APIs are not automated yet, and create API methods and pytest test cases for uncovered ones. Put API methods at the end of page_api/form_api.py, and test cases at the end of test_case/test_form_api_PC.py.",
+    "should_trigger": true
+  },
+  {
+    "query": "Several APIs in this Jacoco report page http://10.12.101.50:8080/jacoco/com.weaver.attendance/AttendanceController.java.html are not yet covered by automation tests. Help me complete them into the API automation project using Java Controller source reference mode.",
+    "should_trigger": true
+  },
+  {
+    "query": "Maintain test_submit_leave in test_case/test_leave_api_PC.py; the workflow recently changed. I captured fresh packets; maintain using capture-driven mode and synchronize API methods and assertions to the latest workflow.\n# Maintenance Task Information\n- [Test Case File]=test_case/test_leave_api_PC.py\n- [Test Case Location]=test_submit_leave",
+    "should_trigger": true
+  },
+  {
+    "query": "Assertions and parametrization for test_budget_list in test_case/test_budget_api_PC.py need to match the style of test_budget_detail; perform localized maintenance referencing existing cases.\n# Maintenance Task Information\n- [Test Case File]=test_case/test_budget_api_PC.py\n- [Test Case Location]=test_budget_list",
+    "should_trigger": true
+  },
+  {
+    "query": "Please help fix test_case/test_meeting_api_PC.py::TestMeeting::test_book_meeting; API payload changed. Here are the cURL and response; maintain against old implementation.\n# Maintenance Task Information\n- [Test Case File]=test_case/test_meeting_api_PC.py\n- [Test Case Location]=test_book_meeting\n\ncurl 'http://10.12.1.20/api/meeting/book' -H 'Content-Type: application/json' --data-raw '{\"roomId\":12,\"startTime\":\"2026-08-01 10:00\"}'",
+    "should_trigger": true
+  },
+  {
+    "query": "Directly run test_case/test_attendance_api_PC.py::TestAttendance::test_clock_in; if it fails, fix according to errors until pytest passes. Execute the closed loop yourself.\n# Maintenance Task Information\n- [Test Case File]=test_case/test_attendance_api_PC.py\n- [Test Case Location]=test_clock_in",
+    "should_trigger": true
+  },
+  {
+    "query": "Check whether URL /api/workflow/request/create has duplicate implementations in page_api; list them if found so we do not rewrite it.",
+    "should_trigger": true
+  },
+  {
+    "query": "Text in API test case test_case/test_hrm_api_PC.py has corrupted question marks; fix encoding to UTF-8 without BOM and verify import paths.",
+    "should_trigger": true
+  },
+  {
+    "query": "Add parametrization to expense module in API automation: test_expense_submit in test_case/test_expense_api_PC.py should support normal, amount exceeded, and missing attachment test data, with synchronized assertions.",
+    "should_trigger": true
+  },
+  {
+    "query": "Make login flow in UI automation testcases/test_login_case.py more reliable; Selenium often misses the login button, add an explicit wait.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a Python unit test for format_date function in utils/date_helper.py using pytest; unrelated to business APIs.",
+    "should_trigger": false
+  },
+  {
+    "query": "Our frontend Vue project calls /api/user/info; add a request interceptor in axios wrapper to attach token automatically. This is frontend code, not API test repository.",
+    "should_trigger": false
+  },
+  {
+    "query": "API test job failed on Jenkins; check if pytest command and HTML report paths in Jenkinsfile are correct; do not edit test cases.",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain how to install mitmproxy and set system proxy; I just want to inspect requests myself, not writing API automation test cases right now.",
+    "should_trigger": false
+  },
+  {
+    "query": "Extract a shared click method in BasePage under UI automation; unrelated to API testing.",
+    "should_trigger": false
+  },
+  {
+    "query": "Database table structure for workflow_request changed; write a SQL migration script and update corresponding MyBatis mapper; do not touch automation tests.",
+    "should_trigger": false
+  },
+  {
+    "query": "Can we change this Allure report theme to company colors? Specifically for UI automation reports directory, not API HTML reports.",
+    "should_trigger": false
+  },
+  {
+    "query": "There is a legacy test case test_old_bid_api in API automation directory with messy file and class names; help rename and organize directory structure without adding new API logic.",
+    "should_trigger": true
+  },
+  {
+    "query": "Run full pytest suite for API automation to see how many failures exist right now; produce a failure inventory without modifying code.",
+    "should_trigger": true
+  },
+  {
+    "query": "Use api-test-e10 skill to process checked API-TPL-001 through API-TPL-005 from git-diff-analyse report per Mode 5 API-TPL template workflow. api-landing.md is in output/run-2026-08-07/; execute per 7-step process in Mode 5.",
+    "should_trigger": true
+  },
+  {
+    "query": "Per Mode 5, process checked [x] API-TPL entries in output/run-latest/api-landing.md, adding corresponding page_api methods and pytest test cases into API automation. Use {param} fuzzy matching for deduplication and include trigger steps in docstrings.",
+    "should_trigger": true
+  },
+  {
+    "query": "Follow Mode 5 flow to implement checked [x] API-TPL templates (form data sharing and group chat creation endpoints) from api-landing.md into API methods and pytest cases; trigger steps and semantic case titles are required.",
+    "should_trigger": true
+  },
+  {
+    "query": "Check which API-TPLs are not yet checked in api-landing.md so I can review before deciding whether to implement. Inspect only, do not write code.",
+    "should_trigger": false
+  },
+  {
+    "query": "Add API methods and pytest test cases in API automation: several uncovered APIs were mentioned in ai-result.md report from git-diff-analyse; help complete them. Note this is not API-TPL template implementation, but generic creation per standard creation modes.",
+    "should_trigger": true
+  }
+];
+
+    let evalItems = EVAL_DATA.map(item => ({ ...item }));
+
+    function render() {
+      const tbody = document.getElementById('eval-body');
+      tbody.innerHTML = '';
+
+      const positive = evalItems.map((item, idx) => ({ ...item, originalIdx: idx })).filter(i => i.should_trigger);
+      const negative = evalItems.map((item, idx) => ({ ...item, originalIdx: idx })).filter(i => !i.should_trigger);
+
+      renderSection(tbody, 'Should Trigger (Positive Examples)', positive);
+      renderSection(tbody, 'Should NOT Trigger (Negative / Boundary Examples)', negative);
+      updateSummary();
+    }
+
+    function renderSection(tbody, title, items) {
+      const headerRow = document.createElement('tr');
+      headerRow.className = 'section-header';
+      headerRow.innerHTML = `<td colspan="3">${title} (${items.length})</td>`;
+      tbody.appendChild(headerRow);
+
+      items.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>
+            <textarea class="query-input" onchange="updateQuery(${item.originalIdx}, this.value)">${escapeHtml(item.query)}</textarea>
+          </td>
+          <td>
+            <label class="toggle">
+              <input type="checkbox" ${item.should_trigger ? 'checked' : ''} onchange="updateTrigger(${item.originalIdx}, this.checked)">
+              <span class="slider"></span>
+            </label>
+          </td>
+          <td>
+            <button class="btn-delete" onclick="deleteRow(${item.originalIdx})">Delete</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function escapeHtml(str) {
+      return (str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function updateQuery(idx, value) { evalItems[idx].query = value; updateSummary(); }
+    function updateTrigger(idx, value) { evalItems[idx].should_trigger = value; render(); }
+    function deleteRow(idx) { evalItems.splice(idx, 1); render(); }
+
+    function addRow() {
+      evalItems.push({ query: '', should_trigger: true });
+      render();
+      const inputs = document.querySelectorAll('.query-input');
+      inputs[inputs.length - 1].focus();
+    }
+
+    function updateSummary() {
+      const trigger = evalItems.filter(i => i.should_trigger).length;
+      const noTrigger = evalItems.filter(i => !i.should_trigger).length;
+      document.getElementById('summary').textContent =
+        `${evalItems.length} queries total: ${trigger} should trigger, ${noTrigger} should not trigger`;
+    }
+
+    function exportEvalSet() {
+      const valid = evalItems.filter(i => i.query.trim() !== '');
+      const data = valid.map(i => ({ query: i.query.trim(), should_trigger: i.should_trigger }));
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'eval_set.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    render();
+  </script>
+</body>
+</html>

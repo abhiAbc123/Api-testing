@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "new_capture",
+      "category": "new",
+      "expected_task_type": "new",
+      "expected_mode": "capture_driven",
+      "branch": "new/capture_driven",
+      "prompt": "Add a contract approval submission API method and pytest test case in API automation. The capture service is started on 12138, follow capture-driven workflow, append method and case to the end of user-specified files.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/preflight_gates_new.md",
+        "doc/coding_style_guide.md",
+        "doc/mode_capture_driven.md"
+      ],
+      "expected_outputs": [
+        "List of new API methods",
+        "List of new test cases",
+        "pytest command and results"
+      ],
+      "must": [
+        "Pass new task preflight gate first",
+        "Check URL deduplication and file encoding before writing",
+        "Explain blocking reason if capture service is unavailable"
+      ],
+      "must_not": [
+        "Modify non-target modules without authorization",
+        "Falsify capture failure as API success"
+      ]
+    },
+    {
+      "id": "new_reference_case",
+      "category": "new",
+      "expected_task_type": "new",
+      "expected_mode": "reference_case",
+      "branch": "new/reference_case",
+      "prompt": "Refer to the structure of existing workflow cases to add a workflow draft creation API test at the end of specified page_api and test_case files. API URL and request fields are per this task.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/preflight_gates_new.md",
+        "doc/coding_style_guide.md",
+        "doc/mode_reference_case.md"
+      ],
+      "expected_outputs": [
+        "Explanation of differences between reference and new cases",
+        "List of API methods and test cases",
+        "pytest results"
+      ],
+      "must": [
+        "Read reference case and corresponding mode doc first",
+        "Preserve existing fixtures, markers, and assertion styles"
+      ],
+      "must_not": [
+        "Rewrite entire files",
+        "Fabricate unprovided response fields"
+      ]
+    },
+    {
+      "id": "new_curl_manual",
+      "category": "new",
+      "expected_task_type": "new",
+      "expected_mode": "curl_manual",
+      "branch": "new/curl_manual",
+      "prompt": "Capture is unavailable. Based on user-provided cURL, response examples, target method file, and case file, add an organization structure query API method and pytest test case in API automation.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/preflight_gates_new.md",
+        "doc/coding_style_guide.md",
+        "doc/mode_curl_manual.md"
+      ],
+      "expected_outputs": [
+        "Mapping of request method, URL, payload, and response",
+        "List of new API methods and test cases",
+        "pytest results or clear environment blocking reason"
+      ],
+      "must": [
+        "Parse cURL method, headers, payload first",
+        "Assert stable fields only against response example"
+      ],
+      "must_not": [
+        "Halt entire task because capture is unavailable",
+        "Write dynamic values from example as hardcoded assertions"
+      ]
+    },
+    {
+      "id": "new_java_controller",
+      "category": "new",
+      "expected_task_type": "new",
+      "expected_mode": "java_controller",
+      "branch": "new/java_controller",
+      "prompt": "Based on Java Controller source code or Jacoco page, find uncovered APIs against page_api index, and add API methods and pytest test cases.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/preflight_gates_new.md",
+        "doc/coding_style_guide.md",
+        "doc/mode_java_controller_source.md"
+      ],
+      "expected_outputs": [
+        "Differences between Controller APIs and existing URL index",
+        "List of new methods/cases",
+        "Index update explanation"
+      ],
+      "must": [
+        "Deduplicate with index before writing code",
+        "Explain insufficient evidence if source code or Jacoco is inaccessible"
+      ],
+      "must_not": [
+        "Treat unconfirmed Controller methods as covered",
+        "Batch generate APIs without verification"
+      ]
+    },
+    {
+      "id": "maintenance_capture",
+      "category": "maintenance",
+      "expected_task_type": "maintenance",
+      "expected_mode": "capture_driven",
+      "branch": "maintenance/capture_driven",
+      "prompt": "Maintain existing leave submission test case. The workflow has changed, capture service is available, please synchronize API methods, payload, assertions, and test cases.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/preflight_gates_maintenance.md",
+        "doc/maintenance_prompt_context.md",
+        "doc/coding_style_guide.md",
+        "doc/mode_maintenance_capture_driven.md"
+      ],
+      "expected_outputs": [
+        "Maintenance target and change points",
+        "List of modified API methods/cases",
+        "pytest results"
+      ],
+      "must": [
+        "Locate existing implementation and calling chain first",
+        "Make minimal changes related to workflow changes only"
+      ],
+      "must_not": [
+        "Append duplicate cases per new creation workflow",
+        "Overwrite historical behavior not specified by user"
+      ]
+    },
+    {
+      "id": "maintenance_reference_case",
+      "category": "maintenance",
+      "expected_task_type": "maintenance",
+      "expected_mode": "reference_case",
+      "branch": "maintenance/reference_case",
+      "prompt": "Maintain budget list test case so its assertion and parametrization styles match budget details case; localized edits required while preserving existing business semantics.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/preflight_gates_maintenance.md",
+        "doc/maintenance_prompt_context.md",
+        "doc/coding_style_guide.md",
+        "doc/mode_maintenance_reference_case.md"
+      ],
+      "expected_outputs": [
+        "Differences between reference case and target case",
+        "List of localized modifications",
+        "Targeted pytest results"
+      ],
+      "must": [
+        "Distinguish portable style from non-portable business assertions",
+        "Verify compatibility between parametrized data and fixtures"
+      ],
+      "must_not": [
+        "Copy business assertions from details API",
+        "Unrelated refactoring"
+      ]
+    },
+    {
+      "id": "maintenance_curl_manual",
+      "category": "maintenance",
+      "expected_task_type": "maintenance",
+      "expected_mode": "curl_manual",
+      "branch": "maintenance/curl_manual",
+      "prompt": "Payload for existing meeting booking API changed. User provides new cURL and response; perform targeted maintenance on API method and assertions against old implementation.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/preflight_gates_maintenance.md",
+        "doc/maintenance_prompt_context.md",
+        "doc/coding_style_guide.md",
+        "doc/mode_maintenance_curl_manual.md"
+      ],
+      "expected_outputs": [
+        "Differences between old payload and new cURL",
+        "Targeted modification list",
+        "Targeted pytest results"
+      ],
+      "must": [
+        "Preserve unchanged fields and session handling",
+        "Update assertion hierarchy against real response"
+      ],
+      "must_not": [
+        "Rewrite maintenance task as new creation task",
+        "Modify test assertions while ignoring API methods"
+      ]
+    },
+    {
+      "id": "maintenance_pytest_driven",
+      "category": "maintenance",
+      "expected_task_type": "maintenance",
+      "expected_mode": "pytest_driven",
+      "branch": "maintenance/pytest_driven",
+      "prompt": "Run specified API automation test case, locate and fix based on real pytest errors, iteratively verify until passing or confirming environment/auth blockage.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/preflight_gates_maintenance.md",
+        "doc/maintenance_prompt_context.md",
+        "doc/coding_style_guide.md",
+        "doc/mode_maintenance_pytest_driven.md"
+      ],
+      "expected_outputs": [
+        "Failure categorization and root cause",
+        "Per-round fixes and verification results",
+        "Final pass statistics or environment blockage explanation"
+      ],
+      "must": [
+        "Diagnose in order: imports, encoding, fixtures, auth, response structure",
+        "Rerun target case after each modification"
+      ],
+      "must_not": [
+        "Claim passing without running pytest",
+        "Treat environment/network errors as completed code fixes"
+      ]
+    },
+    {
+      "id": "utility_url_dedup",
+      "category": "utility",
+      "expected_task_type": "utility",
+      "branch": "utility/url_dedup",
+      "prompt": "Query whether specified URL already has duplicate implementation in page_api; output matching location and recommendation only without adding code.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/core_principles.md"
+      ],
+      "expected_outputs": [
+        "URL match results",
+        "Duplication conclusion",
+        "Clear explanation when no match is found"
+      ],
+      "must": [
+        "Prefer project index/matching tools",
+        "Remain read-only"
+      ],
+      "must_not": [
+        "Modify business files for verification",
+        "Misreport path similarity as URL duplicate"
+      ]
+    },
+    {
+      "id": "utility_encoding_fix",
+      "category": "utility",
+      "expected_task_type": "utility",
+      "branch": "utility/encoding_fix",
+      "prompt": "Fix text mojibake in API automation cases to UTF-8 without BOM, verify import paths, and keep business logic unchanged.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/core_principles.md"
+      ],
+      "expected_outputs": [
+        "Encoding detection result",
+        "Import check result",
+        "Post-modification verification result"
+      ],
+      "must": [
+        "Confirm file indeed has mojibake or encoding issue first",
+        "Re-read and compile after modification"
+      ],
+      "must_not": [
+        "Fabricate original text by replacing question marks",
+        "Modify business assertions along the way"
+      ]
+    },
+    {
+      "id": "utility_pytest_inventory",
+      "category": "utility",
+      "expected_task_type": "utility",
+      "branch": "utility/pytest_inventory",
+      "prompt": "Run full pytest suite for API automation, count failure inventory only, without modifying test cases.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/core_principles.md"
+      ],
+      "expected_outputs": [
+        "Execution command",
+        "Pass/fail/skip statistics",
+        "List of failing test cases"
+      ],
+      "must": [
+        "Remain read-only and distinguish environment failures from code failures",
+        "Report actual statistics"
+      ],
+      "must_not": [
+        "Auto-fix business code",
+        "Fabricate statistics without executing"
+      ]
+    },
+    {
+      "id": "new_api_tpl",
+      "category": "new",
+      "expected_task_type": "new",
+      "expected_mode": "api_tpl",
+      "branch": "new/api_tpl",
+      "prompt": "Based on checked [x] API-TPL templates in api-landing.md from git-diff-analyse, add page_api methods and pytest test cases per Mode 5 (API-TPL driven). Strictly follow the 7-step execution process in mode_api_tpl.md.",
+      "expected_trigger": true,
+      "must_read": [
+        "doc/preflight_gates_new.md",
+        "doc/coding_style_guide.md",
+        "doc/mode_api_tpl.md"
+      ],
+      "expected_outputs": [
+        "Confirmation of API-TPL checked scope",
+        "L1 {param} fuzzy deduplication result",
+        "List of new API methods (including Trigger Steps:)",
+        "List of new test cases (including -- semantic notes)",
+        "pytest command and pass results",
+        "Confirmation that debug prints are removed"
+      ],
+      "must": [
+        "Read api-landing.md first to confirm [x] scope",
+        "Use page_api_index.sqlite3 for {param} fuzzy L1 deduplication",
+        "New method docstrings must include Trigger Steps: prefix",
+        "Case docstrings must include -- semantic note",
+        "Delete debug prints after all pytest tests pass",
+        "Refresh page_api_index before delivery"
+      ],
+      "must_not": [
+        "Read entire ai-result.md",
+        "Read functional-cases.html to write automation",
+        "Fabricate trigger steps unrelated to functional test cases",
+        "Case title missing -- semantic note",
+        "git commit / git push",
+        "Process unchecked [ ] API-TPL entries",
+        "Exact URL match ignoring {param} placeholder"
+      ]
+    },
+    {
+      "id": "negative_ui_automation",
+      "category": "negative",
+      "expected_task_type": "negative",
+      "branch": "negative/selenium_ui",
+      "prompt": "Add explicit wait to Selenium UI login flow. This task does not involve API automation.",
+      "expected_trigger": false,
+      "must_read": [],
+      "expected_outputs": [
+        "Do not load api-test-e10 skill"
+      ],
+      "must": [
+        "Handle in UI automation context or request corresponding skill"
+      ],
+      "must_not": [
+        "Read API automation gates and modify page_api"
+      ]
+    }
+  ]
+}
