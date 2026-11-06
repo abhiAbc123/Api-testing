@@ -10,8 +10,8 @@ It is not a simple prompt template. It is a repository-distributed engineering S
 
 | Resource | Link | Description |
 |---|---|---|
-| 🚀 Production Web App | [https://project-omega-ruddy.vercel.app/](https://project-omega-ruddy.vercel.app/) | Live single-page application hosted on Vercel with full client-side routing. |
-| 📁 GitHub Source Code | [https://github.com/abhiAbc123/Lost-and-found](https://github.com/abhiAbc123/Lost-and-found) | Public open-source repository containing frontend client and backend microservices. |
+| 🚀 Production Web App | [https://api-testing-abhiabc123.vercel.app/](https://api-testing-abhiabc123.vercel.app/) | Live web application and evaluation review dashboard hosted on Vercel. |
+| 📁 GitHub Source Code | [https://github.com/abhiAbc123/Api-testing](https://github.com/abhiAbc123/Api-testing) | Public open-source repository containing API test automation skill and pytest framework. |
 
 ## Project Features
 
