@@ -6,6 +6,13 @@ It is not a simple prompt template. It is a repository-distributed engineering S
 
 ![AI-assisted API testing impact](./assets/readme/productivity-impact-en.svg)
 
+## 🌟 Live Deployments & Key Links
+
+| Resource | Link | Description |
+|---|---|---|
+| 🚀 Production Web App | [https://project-omega-ruddy.vercel.app/](https://project-omega-ruddy.vercel.app/) | Live single-page application hosted on Vercel with full client-side routing. |
+| 📁 GitHub Source Code | [https://github.com/abhiAbc123/Lost-and-found](https://github.com/abhiAbc123/Lost-and-found) | Public open-source repository containing frontend client and backend microservices. |
+
 ## Project Features
 
 This project is especially useful for **large projects with missing API docs, inconsistent API docs, complex request chains, and many existing tests**. In this environment, pure vibe coding can easily miss context, edit the wrong files, or duplicate endpoint wrappers. `ai-api-test-skill` turns a real team's daily API-test creation and maintenance workflow into an executable AI workflow, then uses `Harness engineering` to give the agent explicit boundaries, gates, and feedback loops.
