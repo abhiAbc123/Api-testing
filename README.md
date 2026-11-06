@@ -27,11 +27,6 @@ Key features:
 
 The default template style is `pytest`, but teams can adjust `doc/coding_style_guide.md`, task gates, and test templates to fit their own API automation conventions and extend toward `unittest`, `httpx`, or `aiohttp`.
 
-## Case Records
-
-- [API test-case generation record with AI + Skill](https://www.yuque.com/bbuer/ebdyfe/gpxaqwd5gnwk3bqt?singleDoc#)
-- [API test-case maintenance record with AI + Skill](https://www.yuque.com/bbuer/ebdyfe/bua08uq469osgla1?singleDoc#)
-
 ## Quick Start
 
 > Detailed user manual: [detailedUserManual.md](./detailedUserManual.md).
